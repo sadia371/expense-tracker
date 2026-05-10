@@ -1,0 +1,20 @@
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/tfplan
+terraform/*.tfstate
+terraform/*.tfstate.backup
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Kubernetes secrets (never commit real secrets)
+k8s/base/secrets.yaml
+
+# Node
+node_modules/
+dist/
+build/

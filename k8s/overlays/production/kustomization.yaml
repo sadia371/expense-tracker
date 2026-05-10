@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+# Image tags are patched by GitHub Actions during deploy
+images:
+  - name: REGISTRY_PLACEHOLDER/expense-backend
+    newName: REGISTRY_PLACEHOLDER/expense-backend
+    newTag: latest
+  - name: REGISTRY_PLACEHOLDER/expense-frontend
+    newName: REGISTRY_PLACEHOLDER/expense-frontend
+    newTag: latest
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+    target:
+      kind: Deployment
+      name: backend
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+    target:
+      kind: Deployment
+      name: frontend

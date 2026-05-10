@@ -1,0 +1,17 @@
+# ── terraform.tfvars  ──────────────────────────────────────────────────────────
+# Copy this file to terraform.tfvars and fill in real values.
+# Never commit terraform.tfvars — it is in .gitignore.
+# Sensitive vars (mongo_uri, jwt_secret) are injected by GitHub Actions.
+
+project_name       = "expense-tracker"
+environment        = "production"
+location           = "eastus"
+kubernetes_version = "1.30"
+node_vm_size       = "Standard_D2s_v3"
+node_count         = 2
+node_min_count     = 2
+node_max_count     = 5
+
+# These two are NOT set here; they come from GitHub Secrets as TF_VAR_ env vars:
+# TF_VAR_mongo_uri    = "mongodb+srv://..."
+# TF_VAR_jwt_secret   = "your-secret"
